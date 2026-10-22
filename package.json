@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/Suk-Coo-Chyeo/CuChi.git",
+  "homepage": "https://suk-coo-chyeo.github.io/CuChi/",
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build",
