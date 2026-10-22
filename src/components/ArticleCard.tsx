@@ -11,7 +11,7 @@ interface ArticleCardProps {
 export const ArticleCard: React.FC<ArticleCardProps> = ({ article, onReadMore, featured = false }) => {
   return (
     <article
-      className={`group bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 paper-shadow hover:paper-shadow-lg ${
+      className={`group bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 paper-shadow hover:paper-shadow-lg w-full h-full ${
         featured ? 'md:col-span-2 md:grid md:grid-cols-12 md:gap-6' : ''
       }`}
     >

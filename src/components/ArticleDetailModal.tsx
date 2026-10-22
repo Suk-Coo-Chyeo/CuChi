@@ -1,6 +1,16 @@
-import React from 'react';
-import { Article } from '../types';
-import { X, Calendar, User, ShieldCheck, ExternalLink, MapPin, Tag, Share2, BookOpen } from 'lucide-react';
+import React from "react";
+import { Article } from "../types";
+import {
+  X,
+  Calendar,
+  User,
+  ShieldCheck,
+  ExternalLink,
+  MapPin,
+  Tag,
+  Share2,
+  BookOpen,
+} from "lucide-react";
 
 interface ArticleDetailModalProps {
   article: Article | null;
@@ -11,7 +21,7 @@ interface ArticleDetailModalProps {
 export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
   article,
   onClose,
-  onViewOnMap
+  onViewOnMap,
 }) => {
   if (!article) return null;
 
@@ -73,8 +83,12 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
               className="w-full max-h-[420px] object-cover"
             />
             <div className="p-3 text-xs text-[#352C24]/80 flex flex-col md:flex-row justify-between gap-1 border-t border-[#352C24]/10 bg-[#FAF6ED]">
-              <span><strong>Chú thích:</strong> {article.imageCaption}</span>
-              <span className="text-[#617A50] font-mono">Nguồn ảnh: {article.imageCredit}</span>
+              <span>
+                <strong>Chú thích:</strong> {article.imageCaption}
+              </span>
+              <span className="text-[#617A50] font-mono">
+                Nguồn ảnh: {article.imageCredit}
+              </span>
             </div>
           </div>
 
@@ -112,9 +126,12 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
                   <MapPin className="w-5 h-5 text-[#FAF6ED]" />
                 </div>
                 <div>
-                  <h4 className="font-heading text-xl tracking-wider">Xem Địa Điểm Này Trên Bản Đồ Củ Chi</h4>
+                  <h4 className="font-heading text-xl tracking-wider">
+                    Xem Địa Điểm Này Trên Bản Đồ Củ Chi
+                  </h4>
                   <p className="text-xs text-[#FAF6ED]/75">
-                    Khám phá tọa độ GPS, cách di chuyển, giờ mở cửa và giá vé tham quan.
+                    Khám phá tọa độ GPS, cách di chuyển, giờ mở cửa và giá vé
+                    tham quan.
                   </p>
                 </div>
               </div>
@@ -145,22 +162,32 @@ export const ArticleDetailModal: React.FC<ArticleDetailModalProps> = ({
                   className="p-3 bg-[#F2E8D5] rounded border border-[#352C24]/10 text-xs text-[#352C24]"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 mb-1.5">
-                    <span className="font-bold text-[#243D2B] text-sm">{src.name}</span>
-                    <a
-                      href={src.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#C76B45] hover:underline flex items-center gap-1 font-mono font-semibold"
-                    >
-                      Truy cập nguồn gốc <ExternalLink className="w-3 h-3" />
-                    </a>
+                    <span className="font-bold text-[#243D2B] text-sm">
+                      {src.name}
+                    </span>
+                    {src.id !== "src-11" ? (
+                      <a
+                        href={src.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#C76B45] hover:underline flex items-center gap-1 font-mono font-semibold"
+                      >
+                        Truy cập nguồn gốc <ExternalLink className="w-3 h-3" />
+                      </a>
+                    ) : (
+                      <span className="text-[11px] font-mono text-[#352C24]/60 italic">
+                        Tư liệu nội bộ / Không cần liên kết ngoài
+                      </span>
+                    )}
                   </div>
                   <div className="text-[#352C24]/80 mb-1">
-                    Cơ quan ban hành: <strong>{src.organization}</strong> • Ngày thẩm định: <strong>{src.verifiedDate}</strong>
+                    Cơ quan ban hành: <strong>{src.organization}</strong> • Ngày
+                    thẩm định: <strong>{src.verifiedDate}</strong>
                   </div>
                   {src.supportedFacts && src.supportedFacts.length > 0 && (
                     <div className="text-[11px] text-[#352C24]/70">
-                      <strong>Cơ sở dữ liệu chứng thực:</strong> {src.supportedFacts.join('; ')}
+                      <strong>Cơ sở dữ liệu chứng thực:</strong>{" "}
+                      {src.supportedFacts.join("; ")}
                     </div>
                   )}
                 </div>

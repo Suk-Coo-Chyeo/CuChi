@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bot, Send, Sparkles, MapPin, ShieldCheck, AlertCircle, RefreshCw } from 'lucide-react';
+import { Bot, Send, Sparkles, MapPin, ShieldCheck, AlertCircle, RefreshCw, Minus, X } from 'lucide-react';
 import { AIChatMessage, LocationPoint } from '../types';
 import { isCuchiRelated } from '../utils/rules';
 import { OFFICIAL_SOURCES } from '../data/cuchiData';
@@ -7,9 +7,11 @@ import { OFFICIAL_SOURCES } from '../data/cuchiData';
 interface AIAssistantProps {
   locations: LocationPoint[];
   onOpenLocationOnMap?: (locationId: string) => void;
+  isOpen: boolean;
+  onToggleOpen: () => void;
 }
 
-export const AIAssistant: React.FC<AIAssistantProps> = ({ locations, onOpenLocationOnMap }) => {
+export const AIAssistant: React.FC<AIAssistantProps> = ({ locations, onOpenLocationOnMap, onToggleOpen, isOpen}) => {
   const [messages, setMessages] = useState<AIChatMessage[]>([
     {
       id: 'welcome',
@@ -195,27 +197,70 @@ export const AIAssistant: React.FC<AIAssistantProps> = ({ locations, onOpenLocat
     }
   };
 
+if (!isOpen) {
+    return (
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={onToggleOpen}
+          className="group relative flex items-center gap-2.5 px-4 py-3 bg-[#243D2B] hover:bg-[#617A50] text-[#FAF6ED] rounded-full shadow-2xl border-2 border-[#FAF6ED]/30 hover:border-[#C76B45] transition-all duration-300 hover:scale-105 cursor-pointer"
+          aria-label="Mở Trợ lý AI Củ Chi"
+        >
+          {/* Pulsing online indicator */}
+          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C76B45] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#C76B45]"></span>
+          </span>
+
+          <div className="p-1.5 bg-[#C76B45] rounded-full text-[#FAF6ED] group-hover:rotate-12 transition-transform">
+            <Sparkles className="w-4 h-4" />
+          </div>
+
+          <div className="text-left font-mono pr-1">
+            <div className="text-xs font-bold leading-tight flex items-center gap-1.5">
+              <span>Trợ lý AI Củ Chi</span>
+            </div>
+            <div className="text-[10px] text-[#FAF6ED]/70 leading-none">Hỏi đáp dự án 12A5</div>
+          </div>
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg shadow-md overflow-hidden flex flex-col h-[600px]">
+    <div className="fixed bottom-5 right-5 z-50 w-[calc(100vw-2.5rem)] sm:w-[420px] md:w-[460px] h-[580px] max-h-[85vh] bg-[#FAF6ED] border-2 border-[#243D2B] rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-200">
       {/* Header */}
-      <div className="bg-[#243D2B] text-[#FAF6ED] p-3 md:p-4 flex items-center justify-between border-b border-[#243D2B]">
+      <div className="bg-[#243D2B] text-[#FAF6ED] p-3 px-4 flex items-center justify-between border-b border-[#243D2B] select-none">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 bg-[#617A50] rounded-full text-[#FAF6ED]">
-            <Bot className="w-5 h-5" />
+          <div className="p-1.5 bg-[#C76B45] rounded-full text-[#FAF6ED]">
+            <Sparkles className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="font-heading text-xl md:text-2xl tracking-wider uppercase leading-none">
+            <h3 className="font-heading text-lg md:text-xl tracking-wider uppercase leading-none">
               Trợ Lý Khám Phá Củ Chi
             </h3>
-            <p className="text-[11px] text-[#FAF6ED]/75 font-mono mt-0.5">
-              Chuyên biệt lịch sử & văn hóa Củ Chi · Dự án Lớp 12A5
-            </p>
+            <span className="text-[10px] font-mono text-[#FAF6ED]/75">
+              Học sinh Lớp 12A5 • Kiểm duyệt nguồn dẫn
+            </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 text-xs font-mono bg-[#243D2B]/90 border border-[#617A50] px-2.5 py-1 rounded text-[#FAF6ED]">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#C76B45]" />
-          <span>Kiểm chứng dữ kiện RAG</span>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={onToggleOpen}
+            className="p-1.5 text-[#FAF6ED]/80 hover:text-[#FAF6ED] hover:bg-[#FAF6ED]/10 rounded transition-colors cursor-pointer"
+            title="Thu nhỏ xuống góc dưới"
+            aria-label="Thu nhỏ trợ lý ảo"
+          >
+            <Minus className="w-4 h-4" />
+          </button>
+          <button
+            onClick={onToggleOpen}
+            className="p-1.5 text-[#FAF6ED]/80 hover:text-[#FAF6ED] hover:bg-[#FAF6ED]/10 rounded transition-colors cursor-pointer"
+            title="Đóng"
+            aria-label="Đóng trợ lý ảo"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
       </div>
 

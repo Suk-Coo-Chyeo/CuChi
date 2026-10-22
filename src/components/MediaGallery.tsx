@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
-import { MediaItem } from '../types';
-import { Image as ImageIcon, X, ShieldCheck, Eye, ExternalLink } from 'lucide-react';
+import React, { useState } from "react";
+import { MediaItem } from "../types";
+import {
+  Image as ImageIcon,
+  X,
+  ShieldCheck,
+  Eye,
+  ExternalLink,
+} from "lucide-react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface MediaGalleryProps {
   media: MediaItem[];
 }
 
 export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [lightboxItem, setLightboxItem] = useState<MediaItem | null>(null);
 
-  const categories = ['all', 'Lịch sử', 'Văn hóa', 'Ẩm thực', 'Thiên nhiên'];
+  const categories = ["all", "Lịch sử", "Văn hóa", "Ẩm thực", "Thiên nhiên"];
 
   const filteredMedia = media.filter(
-    (item) => selectedCategory === 'all' || item.category === selectedCategory
+    (item) => selectedCategory === "all" || item.category === selectedCategory,
   );
 
   return (
@@ -34,20 +47,42 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
               onClick={() => setSelectedCategory(cat)}
               className={`text-xs px-3 py-1 rounded font-medium transition-all ${
                 selectedCategory === cat
-                  ? 'bg-[#243D2B] text-[#FAF6ED]'
-                  : 'bg-[#F2E8D5] text-[#352C24] hover:bg-[#F2E8D5]/80 border border-[#352C24]/10'
+                  ? "bg-[#243D2B] text-[#FAF6ED]"
+                  : "bg-[#F2E8D5] text-[#352C24] hover:bg-[#F2E8D5]/80 border border-[#352C24]/10"
               }`}
             >
-              {cat === 'all' ? 'Tất cả' : cat}
+              {cat === "all" ? "Tất cả" : cat}
             </button>
           ))}
         </div>
       </div>
 
       {/* Media Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        spaceBetween={24}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 4000, disableOnInteraction: true }}
+        breakpoints={{
+          640: {
+            slidesPerView: 1.2,
+            spaceBetween: 16,
+          },
+          768: {
+            slidesPerView: 1.8,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+          },
+        }}
+        className="!pb-12"
+        style={{ overflow: "hidden" }}
+      >
         {filteredMedia.map((item) => (
-          <div
+          <SwiperSlide
             key={item.id}
             onClick={() => setLightboxItem(item)}
             className="group relative bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg overflow-hidden cursor-pointer paper-shadow hover:paper-shadow-lg transition-all duration-300 hover:-translate-y-1"
@@ -80,9 +115,9 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
                 <ShieldCheck className="w-3 h-3 text-[#617A50]" />
               </div>
             </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
 
       {/* Lightbox Modal */}
       {lightboxItem && (
@@ -123,7 +158,8 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
                   <strong>Bản quyền/Tác giả:</strong> {lightboxItem.credit}
                 </div>
                 <div>
-                  <strong>Thời điểm thẩm định:</strong> {lightboxItem.verifiedDate}
+                  <strong>Thời điểm thẩm định:</strong>{" "}
+                  {lightboxItem.verifiedDate}
                 </div>
               </div>
             </div>

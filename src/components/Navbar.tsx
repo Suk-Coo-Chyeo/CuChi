@@ -18,7 +18,6 @@ interface NavbarProps {
   activeSection: string;
   exploreCategory: string;
   onNavigate: (sectionId: string, id2: string) => void;
-  onOpenPresentation: () => void;
   onOpenAdmin: () => void;
   onOpenSearch: () => void;
 }
@@ -27,7 +26,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeSection,
   exploreCategory,
   onNavigate,
-  onOpenPresentation,
   onOpenAdmin,
   onOpenSearch
 }) => {
