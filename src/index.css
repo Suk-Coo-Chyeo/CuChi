@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'Be Vietnam Pro', 'DM Sans', monospace;
+  --font-sans: 'DM Sans', 'Be Vietnam Pro', sans-serif;
+  --font-serif: 'Bodoni Moda', 'Playfair Display', serif;
+}
+
+@layer base {
+  :root {
+    --cuchi-darkgreen: #243D2B;
+    --cuchi-green: #617A50;
+    --cuchi-beige: #F2E8D5;
+    --cuchi-lightbeige: #FAF6ED;
+    --cuchi-terracotta: #C76B45;
+    --cuchi-darkbrown: #352C24;
+  }
+
+  body {
+    font-family: 'DM Sans', 'Be Vietnam Pro', 'DejaVu Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--cuchi-beige);
+    color: var(--cuchi-darkbrown);
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: 'Bebas Neue', 'Oswald', 'Be Vietnam Pro', 'DejaVu Sans', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  .font-editorial {
+    font-family: 'Bodoni Moda', 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'DM Sans', 'Be Vietnam Pro', 'DejaVu Sans', sans-serif;
+  }
+
+  .font-mono, pre, code {
+    font-family: 'Be Vietnam Pro', 'DM Sans', monospace !important;
+  }
+}
+
+/* Custom retro stamp & badge styles */
+.retro-border {
+  border: 1px solid rgba(53, 44, 36, 0.2);
+}
+
+.retro-border-dashed {
+  border: 1px dashed rgba(97, 122, 80, 0.4);
+}
+
+.paper-shadow {
+  box-shadow: 2px 3px 0px rgba(36, 61, 43, 0.15);
+}
+
+.paper-shadow-lg {
+  box-shadow: 4px 6px 0px rgba(36, 61, 43, 0.2);
+}
+
+/* Custom Leaflet styling */
+.leaflet-popup-content-wrapper {
+  background-color: #FAF6ED !important;
+  color: #352C24 !important;
+  border: 2px solid #243D2B !important;
+  border-radius: 4px !important;
+  box-shadow: 4px 4px 0px rgba(36, 61, 43, 0.3) !important;
+  padding: 0 !important;
+  font-family: 'DM Sans', 'Be Vietnam Pro', sans-serif !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #FAF6ED !important;
+  border: 2px solid #243D2B !important;
+}
+
+/* Archival stamp effect */
+.archival-stamp {
+  border: 2px solid #C76B45;
+  color: #C76B45;
+  font-family: 'Bebas Neue', 'Oswald', 'Be Vietnam Pro', sans-serif;
+  letter-spacing: 0.08em;
+  transform: rotate(-3deg);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 2px;
+}

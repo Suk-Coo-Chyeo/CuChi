@@ -1,0 +1,135 @@
+import React, { useState } from 'react';
+import { MediaItem } from '../types';
+import { Image as ImageIcon, X, ShieldCheck, Eye, ExternalLink } from 'lucide-react';
+
+interface MediaGalleryProps {
+  media: MediaItem[];
+}
+
+export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [lightboxItem, setLightboxItem] = useState<MediaItem | null>(null);
+
+  const categories = ['all', 'Lịch sử', 'Văn hóa', 'Ẩm thực', 'Thiên nhiên'];
+
+  const filteredMedia = media.filter(
+    (item) => selectedCategory === 'all' || item.category === selectedCategory
+  );
+
+  return (
+    <div className="w-full">
+      {/* Category Filter */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-[#FAF6ED] p-3 rounded border border-[#243D2B]/20">
+        <div className="flex items-center gap-2">
+          <ImageIcon className="w-4 h-4 text-[#C76B45]" />
+          <span className="text-xs font-mono uppercase tracking-widest text-[#243D2B] font-bold">
+            Thư viện tư liệu ({filteredMedia.length} hình ảnh)
+          </span>
+        </div>
+
+        <div className="flex flex-wrap gap-1.5">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`text-xs px-3 py-1 rounded font-medium transition-all ${
+                selectedCategory === cat
+                  ? 'bg-[#243D2B] text-[#FAF6ED]'
+                  : 'bg-[#F2E8D5] text-[#352C24] hover:bg-[#F2E8D5]/80 border border-[#352C24]/10'
+              }`}
+            >
+              {cat === 'all' ? 'Tất cả' : cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Media Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {filteredMedia.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => setLightboxItem(item)}
+            className="group relative bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg overflow-hidden cursor-pointer paper-shadow hover:paper-shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="relative h-48 overflow-hidden bg-[#F2E8D5]">
+              <img
+                src={item.url}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="text-xs bg-[#FAF6ED] text-[#243D2B] font-mono px-3 py-1 rounded flex items-center gap-1 font-semibold">
+                  <Eye className="w-3.5 h-3.5 text-[#C76B45]" /> Xem ảnh lớn
+                </span>
+              </div>
+              <div className="absolute top-2 left-2 bg-[#243D2B]/90 text-[#FAF6ED] text-[10px] font-mono uppercase px-2 py-0.5 rounded">
+                {item.category}
+              </div>
+            </div>
+
+            <div className="p-3">
+              <h4 className="font-heading text-lg text-[#243D2B] truncate group-hover:text-[#C76B45] transition-colors">
+                {item.title}
+              </h4>
+              <p className="text-xs text-[#352C24]/80 line-clamp-2 mt-1 leading-snug">
+                {item.caption}
+              </p>
+              <div className="mt-2 pt-2 border-t border-[#352C24]/10 text-[10px] text-[#617A50] font-mono flex items-center justify-between">
+                <span>Nguồn: {item.credit}</span>
+                <ShieldCheck className="w-3 h-3 text-[#617A50]" />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox Modal */}
+      {lightboxItem && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+          <div className="relative max-w-4xl w-full bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg overflow-hidden shadow-2xl">
+            <div className="bg-[#243D2B] text-[#FAF6ED] px-4 py-3 flex items-center justify-between">
+              <span className="text-xs uppercase font-mono tracking-widest text-[#C76B45] font-bold">
+                Tư liệu ảnh Củ Chi · {lightboxItem.category}
+              </span>
+              <button
+                onClick={() => setLightboxItem(null)}
+                className="p-1 rounded hover:bg-[#617A50] text-[#FAF6ED]"
+                aria-label="Đóng ảnh"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-4 md:p-6">
+              <img
+                src={lightboxItem.url}
+                alt={lightboxItem.title}
+                className="w-full max-h-[60vh] object-contain rounded border border-[#243D2B]/20 mb-4 bg-black/10"
+              />
+
+              <h3 className="font-heading text-2xl text-[#243D2B] mb-2">
+                {lightboxItem.title}
+              </h3>
+              <p className="text-sm text-[#352C24] leading-relaxed mb-4">
+                {lightboxItem.caption}
+              </p>
+
+              <div className="bg-[#F2E8D5] p-3 rounded border border-[#352C24]/10 flex flex-col sm:flex-row justify-between text-xs text-[#352C24] gap-2">
+                <div>
+                  <strong>Nguồn cung cấp:</strong> {lightboxItem.source}
+                </div>
+                <div>
+                  <strong>Bản quyền/Tác giả:</strong> {lightboxItem.credit}
+                </div>
+                <div>
+                  <strong>Thời điểm thẩm định:</strong> {lightboxItem.verifiedDate}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
