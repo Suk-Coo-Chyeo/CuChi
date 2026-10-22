@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({
       <div
         className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity filter contrast-125"
         style={{
-          backgroundImage: `url('/assets/aistudio/image_eb7c3077.png')`,
+          backgroundImage: `url('/CuChi/assets/aistudio/image_eb7c3077.png')`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[#243D2B]/95 via-[#243D2B]/85 to-[#243D2B]/60" />
