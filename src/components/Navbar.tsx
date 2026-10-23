@@ -20,6 +20,8 @@ interface NavbarProps {
   onNavigate: (sectionId: string, id2: string) => void;
   onOpenAdmin: () => void;
   onOpenSearch: () => void;
+  isOpen: boolean;
+  onToggleOpen: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -27,7 +29,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   exploreCategory,
   onNavigate,
   onOpenAdmin,
-  onOpenSearch
+  onOpenSearch,
+  isOpen,
+  onToggleOpen
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -37,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id2: 'explore', id: 'history', label: 'Lịch sử & Di tích', icon: BookOpen },
     { id2: 'explore', id: 'culture', label: 'Văn hóa & Làng nghề', icon: Compass },
     { id2: 'explore', id: 'cuisine', label: 'Ẩm thực & Đặc sản', icon: Utensils },
-    { id2: "", id: 'ai', label: 'Trợ lý AI Củ Chi', icon: Bot },
+    // { id2: "", id: 'ai', label: 'Trợ lý AI Củ Chi', icon: Bot },
     { id2: "", id: 'gallery', label: 'Thư viện ảnh', icon: Compass },
     // { id: 'sources', label: 'Nguồn kiểm chứng', icon: BookOpen },
     { id2: "", id: 'team', label: 'Nhóm 12A5', icon: Users }
@@ -45,6 +49,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const handleNavClick = (id: string, id2:string) => {
     onNavigate(id, id2);
+    setMobileMenuOpen(false);
+  };
+
+  const handleTeam = () => {
+    onToggleOpen();
     setMobileMenuOpen(false);
   };
 
@@ -96,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             return (
               <button
                 key={item.id}
-                onClick={() => handleNavClick(item.id, item.id2)}
+                onClick={() => item.id === 'team' ? handleTeam() : handleNavClick(item.id, item.id2)}
                 className={`px-2.5 py-1.5 rounded transition-all ${
                   isActive
                     ? 'bg-[#617A50] text-[#FAF6ED] font-bold shadow-sm'
@@ -144,7 +153,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               return (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.id, item.id2)}
+                  onClick={() => item.id === "team" ? handleTeam() : handleNavClick(item.id, item.id2) }
                   className={`w-full text-left px-3 py-2 rounded text-xs font-mono flex items-center gap-2.5 ${
                     isActive
                       ? 'bg-[#617A50] text-[#FAF6ED] font-bold'

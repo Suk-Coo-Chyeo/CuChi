@@ -62,6 +62,8 @@ export default function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [adminOpen, setAdminOpen] = useState(false);
   const [isAIOpen, setIsAIOpen] = useState<boolean>(false);
+  const [teamOpen, setTeamOpen] = useState<boolean>(false);
+  const [isMapOpen, setIsMapOpen] = useState(false); // Mặc định trên điện thoại là ẩn để dễ cuộn trang
 
   // Article category filter on explore section
   const [exploreCategory, setExploreCategory] = useState<
@@ -164,6 +166,8 @@ export default function App() {
         }}
         onOpenAdmin={() => setAdminOpen(true)}
         onOpenSearch={() => setSearchOpen(true)}
+        isOpen={teamOpen}
+        onToggleOpen={() => setTeamOpen(!teamOpen)}
       />
 
       {/* 3. Hero Section */}
@@ -193,7 +197,7 @@ export default function App() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#C76B45] font-bold">
                 Địa Không Gian & Di Tích Lịch Sử
               </span>
-              <h2 className="font-heading text-4xl md:text-5xl text-[#243D2B] tracking-wide">
+              <h2 className="font-heading text-4xl md:text-5xl text-[#243D2B] tracking-wide mt-5">
                 BẢN ĐỒ VĂN HÓA TƯƠNG TÁC
               </h2>
             </div>
@@ -252,7 +256,6 @@ export default function App() {
             modules={[Pagination, Autoplay]}
             spaceBetween={24}
             slidesPerView={1}
-            
             pagination={{ clickable: true }}
             autoplay={{ delay: 4000, disableOnInteraction: true }}
             breakpoints={{
@@ -270,10 +273,20 @@ export default function App() {
               },
             }}
             className="!pb-12"
-            style={{ overflow: 'hidden' }}
+            style={
+              {
+                overflow: "hidden",
+                "--swiper-pagination-color": "#243D2B", // Màu của chấm đang active (Xanh đậm)
+                "--swiper-pagination-bullet-inactive-color": "#352C24", // Màu của các chấm chưa chọn
+                "--swiper-pagination-bullet-inactive-opacity": "0.3", // Độ mờ của chấm chưa chọn
+              } as React.CSSProperties
+            }
           >
             {filteredArticles.map((article) => (
-              <SwiperSlide key={article.id} style={{ height: 'auto', display: 'flex' }}>
+              <SwiperSlide
+                key={article.id}
+                style={{ height: "auto", display: "flex" }}
+              >
                 <ArticleCard
                   article={article}
                   onReadMore={(art) => setSelectedArticle(art)}
@@ -294,14 +307,6 @@ export default function App() {
         <div id="cuisine" className="scroll-mt-24" />
 
         {/* 9. AI Assistant Section */}
-        <section id="ai" className="scroll-mt-24 space-y-4">
-          <AIAssistant
-            locations={locations}
-            onOpenLocationOnMap={handleOpenLocationOnMap}
-            isOpen={isAIOpen}
-            onToggleOpen={() => setIsAIOpen(!isAIOpen)}
-          />
-        </section>
 
         {/* 10. Multimedia Archive Gallery Section */}
         <section id="gallery" className="scroll-mt-24 space-y-4">
@@ -310,7 +315,7 @@ export default function App() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#C76B45] font-bold">
                 Kho Tư Liệu Thực Tế
               </span>
-              <h2 className="font-heading text-4xl md:text-5xl text-[#243D2B] tracking-wide">
+              <h2 className="font-heading text-4xl md:text-5xl text-[#243D2B] tracking-wide mt-5">
                 THƯ VIỆN HÌNH ẢNH & MEDIA
               </h2>
             </div>
@@ -324,12 +329,22 @@ export default function App() {
         </section>
 
         {/* 12. Class 12A5 Team Presentation Section */}
-        <section id="team" className="scroll-mt-24">
-          <TeamSection />
-        </section>
       </main>
 
+      {/* 13. Team Presentation Section */}
+      <TeamSection
+        isOpen={teamOpen}
+        onToggleOpen={() => setTeamOpen(!teamOpen)}
+      />
+
       {/* 14. Admin CMS Modal */}
+      <AIAssistant
+        locations={locations}
+        onOpenLocationOnMap={handleOpenLocationOnMap}
+        isOpen={isAIOpen}
+        onToggleOpen={() => setIsAIOpen(!isAIOpen)}
+      />
+
       {adminOpen && (
         <AdminCMS
           articles={articles}

@@ -45,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({
               style={{
                 fontFamily: "Verdana, 'Be Vietnam Pro', 'Oswald', sans-serif",
               }}
-              className="text-7xl sm:text-8xl md:text-9xl font-bold tracking-tight text-[#FAF6ED] leading-none mb-3 drop-shadow-lg"
+              className="text-7xl sm:text-8xl md:text-9xl text-center font-bold tracking-tight text-[#FAF6ED] leading-none mb-3 drop-shadow-lg"
             >
               CỦ CHI
             </h1>

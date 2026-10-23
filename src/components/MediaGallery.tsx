@@ -66,20 +66,25 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
         autoplay={{ delay: 4000, disableOnInteraction: true }}
         breakpoints={{
           640: {
-            slidesPerView: 1.2,
+            slidesPerView: 1,
             spaceBetween: 16,
           },
           768: {
-            slidesPerView: 1.8,
+            slidesPerView: 2,
             spaceBetween: 20,
           },
           1024: {
-            slidesPerView: 2,
+            slidesPerView: 4,
             spaceBetween: 24,
           },
         }}
         className="!pb-12"
-        style={{ overflow: "hidden" }}
+        style={{ 
+          overflow: "hidden",
+          "--swiper-pagination-color": "#243D2B",          // Màu của chấm đang active (Xanh đậm)
+          "--swiper-pagination-bullet-inactive-color": "#352C24", // Màu của các chấm chưa chọn
+          "--swiper-pagination-bullet-inactive-opacity": "0.3",   // Độ mờ của chấm chưa chọn
+        }as React.CSSProperties} 
       >
         {filteredMedia.map((item) => (
           <SwiperSlide
