@@ -56,7 +56,9 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
 
         {/* 5 Members Grid */}
         <Swiper
+          modules={[Pagination]}
           spaceBetween={24}
+          pagination={{ clickable: true }}
           slidesPerView={1}
           breakpoints={{
             640: {
@@ -73,13 +75,22 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
             },
           }}
           className="!pb-12"
-          style={{ overflow: "hidden" }}
+          style={
+            {
+              overflow: "hidden",
+              "--swiper-pagination-color": "#243D2B", // Màu của chấm đang active (Xanh đậm)
+              "--swiper-pagination-bullet-inactive-color": "#352C24", // Màu của các chấm chưa chọn
+              "--swiper-pagination-bullet-inactive-opacity": "0.3", // Độ mờ của chấm chưa chọn
+            } as React.CSSProperties
+          }
         >
           {CLASS_12A5_MEMBERS.map((member) => (
             <SwiperSlide
               key={member.id}
-              className="bg-[#F2E8D5] border-2 border-[#243D2B] rounded-lg p-5 flex flex-col justify-between paper-shadow hover:paper-shadow-lg transition-all h-full"
+              style={{ height: "auto", display: "flex", alignItems: "stretch" }}
+              className="h-auto"
             >
+              <div className="bg-[#F2E8D5] border-2 border-[#243D2B] rounded-lg p-5 flex flex-col justify-between paper-shadow hover:paper-shadow-lg transition-all w-full h-full">
               <div>
                 <div className="flex items-center justify-between mb-3 border-b border-[#352C24]/15 pb-2">
                   <span className="font-heading text-2xl text-[#C76B45]">
@@ -116,6 +127,7 @@ export const TeamSection: React.FC<TeamSectionProps> = ({
                     </li>
                   ))}
                 </ul>
+              </div>
               </div>
             </SwiperSlide>
           ))}

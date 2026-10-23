@@ -120,9 +120,6 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, autost
               >
                 <div className="text-xs text-[#FAF6ED]/50 font-mono">0{member.id}</div>
                 <div className="text-sm font-semibold text-[#FAF6ED] truncate">{member.name}</div>
-                <div className="text-[11px] text-[#FAF6ED]/70 leading-tight mt-0.5 truncate">
-                  {member.role.split('&')[0]}
-                </div>
               </div>
             ))}
           </div>

@@ -11,7 +11,9 @@ import {
   BookOpen,
   Users,
   Utensils,
-  Landmark
+  Landmark,
+  BarChart2,
+  LayoutGrid
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -37,6 +39,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const NAV_ITEMS = [
     { id2: "", id: 'hero', label: 'Trang chủ', icon: Landmark },
+    { id2: "", id: 'overview', label: 'Tổng quan', icon: LayoutGrid },
+    { id2: "", id: 'metrics', label: 'Chỉ tiêu phát triển', icon: BarChart2 },
     { id2: "", id: 'map', label: 'Bản đồ văn hóa', icon: MapPin },
     { id2: 'explore', id: 'history', label: 'Lịch sử & Di tích', icon: BookOpen },
     { id2: 'explore', id: 'culture', label: 'Văn hóa & Làng nghề', icon: Compass },

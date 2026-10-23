@@ -4,6 +4,7 @@ import {
   MediaItem,
   TeamMember,
   VerificationSource,
+  HistoricalEvent
 } from "../types";
 
 export const OFFICIAL_SOURCES: VerificationSource[] = [
@@ -684,6 +685,51 @@ export const CLASS_12A5_MEMBERS: TeamMember[] = [
       "Hỗ trợ kỹ thuật trình chiếu báo cáo chuyên đề",
     ],
   },
+];
+
+export const TIMELINE_DATA: HistoricalEvent[] = [
+  {
+    year: '1948',
+    title: 'Khởi đầu xây dựng Địa đạo Củ Chi',
+    description: 'Phong trào đào hầm bí mật bắt đầu tại xã Tân Phú Trung và Phước Vĩnh Nhĩ, ban đầu là những căn hầm cá nhân tránh càn.',
+    source: 'Lịch sử Địa đạo Củ Chi'
+  },
+  {
+    year: '1961 - 1965',
+    title: 'Phát triển hệ thống địa đạo liên hoàn',
+    description: 'Địa đạo được mở rộng liên thông giữa các xã "ấp liền ấp, xã liền xã" với tổng chiều dài ngầm hơn 200 km.',
+    source: 'Tài liệu Lịch sử Đất Thép Thành Đồng'
+  },
+  {
+    year: '1967',
+    title: 'Củ Chi được phong tặng danh hiệu Đất Thép Thành Đồng',
+    description: 'Ủy ban Trung ương Mặt trận Dân tộc Giải phóng miền Nam Việt Nam phong tặng Củ Chi danh hiệu vinh dự cao quý cùng Huân chương Thành đồng hạng Nhất.',
+    source: 'Hồ sơ Di tích Quốc gia Đặc biệt'
+  },
+  {
+    year: '2015',
+    title: 'Địa đạo Củ Chi được xếp hạng Di tích Quốc gia Đặc biệt',
+    description: 'Thủ tướng Chính phủ ký quyết định xếp hạng Địa đạo Củ Chi là Di tích Quốc gia Đặc biệt.',
+    source: 'Quyết định của Thủ tướng Chính phủ'
+  },
+  {
+    year: '11/11/2022',
+    title: 'Ra mắt Không gian VH Hồ Chí Minh tại Chùa Hoằng Linh',
+    description: 'Một trong những cơ sở Phật giáo đầu tiên trên địa bàn Thành phố Hồ Chí Minh ra mắt Không gian văn hóa Hồ Chí Minh trong khuôn viên chùa.',
+    source: 'Tài liệu Giới thiệu Xã Củ Chi (trang 2)'
+  },
+  {
+    year: '27/07/2025',
+    title: 'Khánh thành Không gian VH Hồ Chí Minh tại Địa đạo Củ Chi',
+    description: 'Công trình diện tích gần 240 m² trưng bày hệ thống tư liệu, hình ảnh quý giá về Bác Hồ trong lòng di tích lịch sử.',
+    source: 'Tài liệu Giới thiệu Xã Củ Chi (trang 1)'
+  },
+  {
+    year: '07/2026',
+    title: 'Khánh thành Thư viện điện tử 776 đầu sách tại UBND Xã Củ Chi',
+    description: 'Thư viện số và điểm dừng chân du lịch với 100% vốn xã hội hóa, tra cứu 776 đầu sách điện tử về Chủ tịch Hồ Chí Minh và đất nước.',
+    source: 'Tài liệu Giới thiệu Xã Củ Chi (trang 1)'
+  }
 ];
 
 export const CUCHI_STATS = {

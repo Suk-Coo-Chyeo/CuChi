@@ -90,8 +90,10 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
           <SwiperSlide
             key={item.id}
             onClick={() => setLightboxItem(item)}
-            className="group relative bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg overflow-hidden cursor-pointer paper-shadow hover:paper-shadow-lg transition-all duration-300 hover:-translate-y-1"
+            style={{ height: "auto", display: "flex", alignItems: "stretch" }}
+            className="group cursor-pointer"
           >
+            <div className="relative bg-[#FAF6ED] border-2 border-[#243D2B] rounded-lg overflow-hidden paper-shadow hover:paper-shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col w-full">
             <div className="relative h-48 overflow-hidden bg-[#F2E8D5]">
               <img
                 src={item.url}
@@ -119,6 +121,7 @@ export const MediaGallery: React.FC<MediaGalleryProps> = ({ media }) => {
                 <span>Nguồn: {item.credit}</span>
                 <ShieldCheck className="w-3 h-3 text-[#617A50]" />
               </div>
+            </div>
             </div>
           </SwiperSlide>
         ))}

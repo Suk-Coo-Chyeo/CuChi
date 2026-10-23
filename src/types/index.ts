@@ -100,3 +100,10 @@ export interface ProjectEvaluation {
   comment: string;
   createdAt: string;
 }
+
+export interface HistoricalEvent {
+  year: string;
+  title: string;
+  description: string;
+  source: string;
+}

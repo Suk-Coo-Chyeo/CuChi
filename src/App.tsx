@@ -36,7 +36,10 @@ import { MediaGallery } from "./components/MediaGallery";
 import { TeamSection } from "./components/TeamSection";
 import { AdminCMS } from "./components/AdminCMS";
 import { SearchModal } from "./components/SearchModal";
+import { OverviewSection } from "./components/OverviewTabs";
+import { MetricSection } from "./components/MetricsTimeline";
 import { Footer } from "./components/Footer";
+
 import {
   Compass,
   MapPin,
@@ -119,10 +122,21 @@ export default function App() {
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    // Delay nhỏ để chờ mobile drawer đóng animation trước khi scroll
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (!element) return;
+      // Tính chiều cao thực tế của sticky header (navbar)
+      const navbar = document.querySelector("header");
+      const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
+      const extraOffset = 12; // thêm padding thẩm mỹ
+      const elementTop =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementTop - navbarHeight - extraOffset,
+        behavior: "smooth",
+      });
+    }, 80);
   };
 
   const handleSelectArticleBySlug = (slug: string) => {
@@ -190,6 +204,16 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl mx-auto px-4 py-12 md:py-16 space-y-20 w-full">
+        {/* addon-1 overview */}
+        <div id="overview" className="scroll-mt-24">
+          <OverviewSection />
+        </div>
+
+        {/* addon-2 Metric */}
+        <div id="metrics" className="scroll-mt-24">
+          <MetricSection />
+        </div>
+
         {/* 4. Interactive Leaflet Map Section */}
         <section id="map" className="scroll-mt-24 space-y-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b-2 border-[#243D2B]/20 pb-3">
@@ -285,7 +309,7 @@ export default function App() {
             {filteredArticles.map((article) => (
               <SwiperSlide
                 key={article.id}
-                style={{ height: "auto", display: "flex" }}
+                style={{ height: "auto", display: "flex", alignItems: "stretch" }}
               >
                 <ArticleCard
                   article={article}
