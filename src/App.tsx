@@ -262,7 +262,7 @@ export default function App() {
                 <button
                   key={cat.id}
                   onClick={() => setExploreCategory(cat.id as any)}
-                  className={`text-xs px-3 py-1.5 rounded font-mono font-medium transition-all ${
+                  className={`text-xs px-3 py-1.5 rounded font-medium transition-all ${
                     exploreCategory === cat.id
                       ? "bg-[#243D2B] text-[#FAF6ED] font-bold shadow-sm"
                       : "bg-[#FAF6ED] text-[#352C24] hover:bg-[#FAF6ED]/80 border border-[#352C24]/15"

@@ -158,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => item.id === "team" ? handleTeam() : handleNavClick(item.id, item.id2) }
-                  className={`w-full text-left px-3 py-2 rounded text-xs font-mono flex items-center gap-2.5 ${
+                  className={`w-full text-left px-3 py-2 rounded text-xs flex items-center gap-2.5 ${
                     isActive
                       ? 'bg-[#617A50] text-[#FAF6ED] font-bold'
                       : 'text-[#FAF6ED]/80 hover:bg-[#FAF6ED]/10'

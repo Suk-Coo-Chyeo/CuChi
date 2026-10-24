@@ -46,7 +46,7 @@ export const OverviewSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b-2 border-[#243D2B]/20 pb-3">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[#C76B45] font-bold">
-              01. Khái Quát Địa Lý & Văn Hóa
+              Khái Quát Địa Lý & Văn Hóa
             </span>
             <h2 className="font-heading text-4xl md:text-5xl text-[#243D2B] tracking-wide mt-5">
               Giải Mã Đất Thép — Từ Căn Cứ Hào Hùng Đến Đô Thị Sinh Thái

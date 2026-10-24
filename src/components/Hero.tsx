@@ -20,7 +20,6 @@ export const Hero: React.FC<HeroProps> = ({
   onCulture,
   onCuisine,
 }) => {
-
   return (
     <section className="relative w-full bg-[#243D2B] text-[#FAF6ED] overflow-hidden border-b-4 border-[#617A50]">
       {/* Background with user's authentic Củ Chi entrance sign photo */}
@@ -64,8 +63,8 @@ export const Hero: React.FC<HeroProps> = ({
               Nằm ở cửa ngõ Tây Bắc Thành phố Hồ Chí Minh, Củ Chi là bản trường
               ca bất tử của lòng dũng cảm với mạng lưới địa đạo dài hơn 250km
               xuyên lòng đất, đền tưởng niệm linh thiêng bên bờ sông Sài Gòn,
-              làng nghề bánh tráng trăm năm và những vườn cây trái trĩu ngọt
-              phù sa.
+              làng nghề bánh tráng trăm năm và những vườn cây trái trĩu ngọt phù
+              sa.
             </p>
           </div>
         </div>
@@ -125,28 +124,58 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Div số 1: Chuyển đến Bản đồ văn hóa */}
           <div
             onClick={() => onHistory()}
-            className="cursor-pointer p-6 bg-[#243D2B] text-[#FAF6ED] rounded-lg hover:bg-[#617A50] transition-all"
+            className="group relative cursor-pointer p-6 rounded-lg overflow-hidden flex flex-col justify-between h-64 bg-[url('/CuChi/assets/aistudio/hero_img/lsdt.jpg')] bg-cover bg-center transition-all duration-300 hover:-translate-y-1 border-1 border-[#3E5C45] hover:border-[#E5D3B3] paper-shadow hover:paper-shadow-lg"
           >
-            <h3>Lịch sử & Di tích</h3>
-            <p>Tìm hiểu các mốc son lịch sử hào hùng</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#243D2B] via-[#243D2B]/40 to-[#243D2B]/30 transition-colors duration-300 group-hover:from-[#1E3324] group-hover:via-[#1E3324]/60" />
+
+            {/* Nội dung bên trong (Bắt buộc phải có relative z-10 để nổi lên trên lớp ảnh nền và gradient) */}
+            <div className="relative z-10 flex flex-col justify-end h-full text-[#FAF6ED]">
+              {/* Phần tiêu đề & mô tả ở trên */}
+              <div>
+                <h3 className="text-sm md:text-lg font-bold mb-1">Lịch sử & Di tích</h3>
+                <p className="hidden md:block text-sm opacity-90">
+                  Tìm hiểu các mốc son lịch sử hào hùng
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Div số 2: Chuyển đến Lịch sử & Di tích */}
           <div
             onClick={() => onCulture()}
-            className="cursor-pointer p-6 bg-[#243D2B] text-[#FAF6ED] rounded-lg hover:bg-[#617A50] transition-all"
+            className="group relative cursor-pointer p-6 rounded-lg overflow-hidden flex flex-col justify-between h-64 bg-[url('/CuChi/assets/aistudio/hero_img/vhln.jpg')] bg-cover bg-center transition-all duration-300 hover:-translate-y-1 border-1 border-[#3E5C45] hover:border-[#E5D3B3] paper-shadow hover:paper-shadow-lg"
           >
-            <h3>Văn hóa & Làng nghề</h3>
-            <p>Khám phá nét văn hóa đặc trưng</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#243D2B] via-[#243D2B]/40 to-[#243D2B]/30 transition-colors duration-300 group-hover:from-[#1E3324] group-hover:via-[#1E3324]/60" />
+
+            {/* Nội dung bên trong (Bắt buộc phải có relative z-10 để nổi lên trên lớp ảnh nền và gradient) */}
+            <div className="relative z-10 flex flex-col justify-end h-full text-[#FAF6ED]">
+              {/* Phần tiêu đề & mô tả ở trên */}
+              <div>
+                <h3 className="text-sm md:text-lg font-bold mb-1">Văn hóa & Làng nghề</h3>
+                <p className="hidden md:block text-sm opacity-90">
+                  Khám phá nét văn hóa đặc trưng
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Div số 3: Chuyển đến Ẩm thực & Đặc sản */}
           <div
             onClick={() => onCuisine()}
-            className="cursor-pointer p-6 bg-[#243D2B] text-[#FAF6ED] rounded-lg hover:bg-[#617A50] transition-all"
+            className="group relative cursor-pointer p-6 rounded-lg overflow-hidden flex flex-col justify-between h-64 bg-[url('/CuChi/assets/aistudio/hero_img/atds.jpg')] bg-cover bg-center transition-all duration-300 hover:-translate-y-1 border-1 border-[#3E5C45] hover:border-[#E5D3B3] paper-shadow hover:paper-shadow-lg"
           >
-            <h3>Ẩm thực & Đặc sản</h3>
-            <p>Thưởng thức hương vị vùng đất thép</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#243D2B] via-[#243D2B]/40 to-[#243D2B]/30 transition-colors duration-300 group-hover:from-[#1E3324] group-hover:via-[#1E3324]/60" />
+
+            {/* Nội dung bên trong (Bắt buộc phải có relative z-10 để nổi lên trên lớp ảnh nền và gradient) */}
+            <div className="relative z-10 flex flex-col justify-end h-full text-[#FAF6ED]">
+              {/* Phần tiêu đề & mô tả ở trên */}
+              <div>
+                <h3 className="text-sm md:text-lg font-bold mb-1">Ẩm thực & Đặc sản</h3>
+                <p className="hidden md:block text-sm opacity-90">
+                  Thưởng thức hương vị vùng đất thép
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

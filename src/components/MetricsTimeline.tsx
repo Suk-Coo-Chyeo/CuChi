@@ -59,7 +59,6 @@ export const MetricSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b-2 border-[#243D2B]/20 pb-3">
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-[#C76B45] font-bold">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#356B4B]" />
               Dữ Liệu Đã Xác Minh & Phê Duyệt
             </span>
             <h2 className="font-heading text-4xl md:text-5xl text-[#243D2B] tracking-wide mt-5">

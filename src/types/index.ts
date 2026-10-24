@@ -72,6 +72,7 @@ export interface TeamMember {
   role: string;
   bio: string;
   tasks: string[];
+  img: string
 }
 
 export interface AIChatMessage {

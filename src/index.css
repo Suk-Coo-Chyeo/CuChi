@@ -1,44 +1,65 @@
 @import "tailwindcss";
 
 @theme {
-  --font-mono: 'Be Vietnam Pro', 'DM Sans', monospace;
-  --font-sans: 'DM Sans', 'Be Vietnam Pro', sans-serif;
-  --font-serif: 'Bodoni Moda', 'Playfair Display', serif;
+  --font-mono: "Be Vietnam Pro", "DM Sans", monospace;
+  --font-sans: "DM Sans", "Be Vietnam Pro", sans-serif;
+  --font-serif: "Bodoni Moda", "Playfair Display", serif;
 }
 
 @layer base {
   :root {
-    --cuchi-darkgreen: #243D2B;
-    --cuchi-green: #617A50;
-    --cuchi-beige: #F2E8D5;
-    --cuchi-lightbeige: #FAF6ED;
-    --cuchi-terracotta: #C76B45;
-    --cuchi-darkbrown: #352C24;
+    --cuchi-darkgreen: #243d2b;
+    --cuchi-green: #617a50;
+    --cuchi-beige: #f2e8d5;
+    --cuchi-lightbeige: #faf6ed;
+    --cuchi-terracotta: #c76b45;
+    --cuchi-darkbrown: #352c24;
   }
 
   body {
-    font-family: 'DM Sans', 'Be Vietnam Pro', 'DejaVu Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:
+      "DM Sans",
+      "Be Vietnam Pro",
+      "DejaVu Sans",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
     background-color: var(--cuchi-beige);
     color: var(--cuchi-darkbrown);
     margin: 0;
     padding: 0;
   }
 
-  h1, h2, h3, .font-heading {
-    font-family: 'Bebas Neue', 'Oswald', 'Be Vietnam Pro', 'DejaVu Sans', sans-serif;
+  h1,
+  h2,
+  h3,
+  .font-heading {
+    font-family: "Grand Hotel", sans-serif;
     letter-spacing: 0.04em;
   }
 
   .font-editorial {
-    font-family: 'Bodoni Moda', 'Playfair Display', serif;
+    font-family: "Lobster", serif;
   }
 
   .font-body {
-    font-family: 'DM Sans', 'Be Vietnam Pro', 'DejaVu Sans', sans-serif;
+    font-family: "DM Sans", "Be Vietnam Pro", "DejaVu Sans", sans-serif;
   }
 
-  .font-mono, pre, code {
-    font-family: 'Be Vietnam Pro', 'DM Sans', monospace !important;
+  .font-mono,
+  pre,
+  code {
+    font-family: "Lobster", "DM Sans", monospace !important;
+  }
+
+  p {
+    font-family:  "Be Vietnam Pro";
+  }
+
+  /* Áp dụng font riêng cho tất cả các nút bấm (bao gồm cả thẻ button và các thành phần có class tương tự) */
+  button,
+  .btn {
+    font-family: 'Montserrat';
   }
 }
 
@@ -61,13 +82,13 @@
 
 /* Custom Leaflet styling */
 .leaflet-popup-content-wrapper {
-  background-color: #FAF6ED !important;
-  color: #352C24 !important;
-  border: 2px solid #243D2B !important;
+  background-color: #faf6ed !important;
+  color: #352c24 !important;
+  border: 2px solid #243d2b !important;
   border-radius: 4px !important;
   box-shadow: 4px 4px 0px rgba(36, 61, 43, 0.3) !important;
   padding: 0 !important;
-  font-family: 'DM Sans', 'Be Vietnam Pro', sans-serif !important;
+  font-family: "DM Sans", "Be Vietnam Pro", sans-serif !important;
 }
 
 .leaflet-popup-content {
@@ -76,15 +97,15 @@
 }
 
 .leaflet-popup-tip {
-  background-color: #FAF6ED !important;
-  border: 2px solid #243D2B !important;
+  background-color: #faf6ed !important;
+  border: 2px solid #243d2b !important;
 }
 
 /* Archival stamp effect */
 .archival-stamp {
-  border: 2px solid #C76B45;
-  color: #C76B45;
-  font-family: 'Bebas Neue', 'Oswald', 'Be Vietnam Pro', sans-serif;
+  border: 2px solid #c76b45;
+  color: #c76b45;
+  font-family: "Bebas Neue", "Oswald", "Be Vietnam Pro", sans-serif;
   letter-spacing: 0.08em;
   transform: rotate(-3deg);
   display: inline-block;
